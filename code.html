@@ -69,6 +69,53 @@
         <p>A repository of code fragments, historical hacks, and digital exploits (Transmissions).</p>
 
         <section class="code-post">
+            <h3>Project: System_Root Automation Framework (2026)</h3>
+            <p class="code-meta">DATE: 2026.03.31 // Operator: Gemini_CLI & Rjaac78 // LOCATION: Setúbal Terminal //</p>
+
+            <p class="code-description">
+                Desenvolvimento de um motor de automação (Pseudo-Framework) para transformar rascunhos em texto bruto (.txt) em transmissões HTML completas, com sincronização automática para o GitHub e Netlify.
+            </p>
+
+            <div class="code-snippet">
+                <pre>
+Structure Analysis:
+/systemroot
+├── _generator/
+│   ├── templates/          # Modelos HTML com marcadores {{TITLE}}, {{DATE}}, etc.
+│   └── manage.py           # O motor em Python (File I/O + Git Automation)
+├── posts/
+│   ├── text_files/         # Onde residem os rascunhos em texto simples
+│   └── *.html              # Posts gerados automaticamente
+└── index.html              # Atualizado dinamicamente pelo motor
+                </pre>
+            </div>
+
+            <p>
+                <strong>Tecnologias:</strong> Python 3.14 (Processamento de Strings e Subprocessos), PowerShell (Scripts de Sync em lote) e Git (Version Control).
+            </p>
+
+            <p><strong>O Motor (Python Logic):</strong></p>
+            <pre class="code-snippet">
+# Fragmento do manage.py: A lógica de injeção dinâmica
+def update_index(title, summary, filename, date_str):
+    marker = '&lt;h2&gt;LATEST TRANSMISSION_&lt;/h2&gt;'
+    with open(INDEX_FILE, 'r') as f:
+        content = f.read()
+    
+    # Injeção cirúrgica de novos posts no topo da lista
+    parts = content.split(marker)
+    new_content = parts[0] + marker + "\n\n" + item_html + parts[1]
+    
+    with open(INDEX_FILE, 'w') as f:
+        f.write(new_content)
+            </pre>
+
+            <p>
+                Este framework permite que o operador se foque no conteúdo (Ghost), enquanto a máquina (Shell) trata da formatação, SEO básico e distribuição de rede (Git Push).
+            </p>
+        </section>
+
+        <section class="code-post">
             <h3>Historical Exploit: The Morris Worm (1988)</h3>
             <p class="code-meta">DATE: 2025.04.25 // Operator: Rjaac78 // LOCATION: Setúbal Terminal //</p>
 
