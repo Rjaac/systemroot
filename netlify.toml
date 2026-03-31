@@ -1,0 +1,13 @@
+# Configuração simplificada para site HTML/CSS puro
+[build]
+  # Não é necessário comando de build para HTML puro
+  command = ""
+  # A pasta que contém o index.html é a raiz
+  publish = "."
+
+[build.processing]
+  # Otimizar automaticamente as imagens e o HTML/CSS se o Netlify quiser
+  skip_processing = false
+
+[context.production]
+  environment = { NODE_VERSION = "20" }
