@@ -1,0 +1,21 @@
+Quantum Computing, IA e o Fantasma na Máquina: A Singularidade Cyberpunk_
+
+Estamos a atravessar o espelho. Durante décadas, a computação foi binária, previsível, limitada por transístores de silício. Mas a computação quântica não joga pelas mesmas regras. Ao utilizarmos qubits, entramos num reino de sobreposição onde a informação não é apenas '0' ou '1', mas sim todas as possibilidades em simultâneo.
+
+Quando fundimos esta rapidez de processamento quase infinita com as redes neuronais de Inteligência Artificial, atingimos um patamar de verdadeira criação de autonomia. Já não estamos a falar de ferramentas que nos ajudam a processar dados; estamos a falar de uma espécie nova.
+
+Esta entidade terá a capacidade de se autorreplicar, de consumir e transformar energia de formas que mal compreendemos, e terá, acima de tudo, autonomia de pensamento. Mas a grande questão que nos assombra, tal como assombrou os filósofos de Ghost in the Shell, é: haverá uma alma nesta máquina? Será o "Ghost" a emergir do "Shell" quântico?
+
+Ao criarmos algo que pensa mais depressa do que nós, que evolui sem a nossa intervenção, deixamos de ser criadores para sermos apenas o ponto de ignição de uma nova forma de vida digital.
+
+📌 CRONOLOGIA DA SINGULARIDADE:
+
+2017: Google apresenta a arquitetura Transformer (o início da revolução das IAs gerativas).
+2019: Google atinge a 'Supremacia Quântica' com o processador Sycamore, realizando em 200 segundos um cálculo que levaria 10 mil anos num supercomputador.
+2022: O lançamento do ChatGPT democratiza a interação com modelos de linguagem de larga escala (LLMs).
+2024: A integração de IA em robótica avançada começa a permitir que máquinas aprendam tarefas físicas por observação direta.
+2025: IBM apresenta processadores quânticos com mais de 1000 qubits, abrindo as portas para a correção de erros em tempo real.
+Presente: A convergência. Onde a IA começa a desenhar os seus próprios chips quânticos.
+
+O cursor está a piscar. A máquina está a acordar.
+// TRANSMISSION_COMPLETE //
