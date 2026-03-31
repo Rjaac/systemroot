@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Marcador de Título: O script vai substituir pelo título do post -->
+    <title>GRID_ROOT :: {{TITLE}}</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <img src="/img/avatar.png" alt="RJAAC78 avatar" class="avatar">
+
+    <header class="main-header">
+        <h1>&gt; SYSTEM_ROOT</h1>
+        <nav class="main-nav">
+            <a href="../index.html">[ ROOT_DIR ]</a>
+            <a href="../books.html">[ WORD_PROCESSOR ]</a>
+            <a href="../photos.html">[ SCREEN_GRABS ]</a>
+            <a href="../code.html">[ EXEC_FILES ]</a>
+        </nav>
+    </header>
+
+    <main class="content-area">
+        <article>
+            <!-- Título Principal do Post -->
+            <h2>&gt;&gt; {{TITLE}}</h2>
+            <!-- Meta-dados: Data e Localização que o script preenche -->
+            <p class="post-meta">_DATE: {{DATE}} // LOCATION: Setúbal Terminal //</p>
+
+            <!-- Conteúdo do Post: Onde o seu texto será inserido -->
+            <div class="post-body">
+                {{CONTENT}}
+            </div>
+
+            <p>// TRANSMISSION_COMPLETE //</p>
+        </article>
+
+        <hr style="border-color: var(--border-color); margin: 2rem 0;">
+        <a href="../index.html">[ <--- Return to Root ]</a>
+    </main>
+
+    <footer class="main-footer">
+        <p>// CONNECTION ACTIVE :: GRID_ROOT :: SECURE_CHANNEL //</p>
+        <p>&copy; 2025 // Rjaac78@gmail.com // Location: Setúbal Terminal //</p>
+    </footer>
+
+</body>
+</html>
