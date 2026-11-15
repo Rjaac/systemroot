@@ -289,23 +289,39 @@ def interactive_wizard(content_type=None):
         return
 
     template_src = os.path.join(TXT_TEMPLATES_DIR, f"{content_type}.txt")
-    shutil.copy2(template_src, ACTIVE_DRAFT_FILE)
+    if os.path.exists(ACTIVE_DRAFT_FILE):
+        existing_headers, _, _ = parse_template_file(ACTIVE_DRAFT_FILE)
+        if existing_headers.get('TITLE', '').strip():
+            reuse = input("\n>> Existe um rascunho anterior por publicar. Queres continuar a editá-lo? (S/N): ").strip().lower()
+            if reuse not in ('s', 'sim', 'y', 'yes'):
+                shutil.copy2(template_src, ACTIVE_DRAFT_FILE)
+        else:
+            shutil.copy2(template_src, ACTIVE_DRAFT_FILE)
+    else:
+        shutil.copy2(template_src, ACTIVE_DRAFT_FILE)
 
-    print(f"\n>> A abrir o Notepad com o modelo '{content_type.upper()}'...")
-    print(">> Escreve o teu conteúdo, guarda (Ctrl+S) e fecha a janela do Notepad para continuar.")
-    subprocess.run(["notepad.exe", ACTIVE_DRAFT_FILE], check=False)
+    print(f"\n>> A abrir o Notepad com o ficheiro: {ACTIVE_DRAFT_FILE}")
+    print(">> 1. Escreve/cola o teu conteúdo no Notepad")
+    print(">> 2. Guarda no Notepad (Ctrl+S)")
+    subprocess.Popen(["notepad.exe", ACTIVE_DRAFT_FILE])
 
-    if not os.path.exists(ACTIVE_DRAFT_FILE):
-        print("AVISO: Rascunho não encontrado.")
-        return
+    while True:
+        choice = input("\n>> Depois de fazeres Ctrl+S no Notepad, prime [ENTER] aqui para avançar (ou 'q' para cancelar): ").strip().lower()
+        if choice in ('q', 'sair', 'cancelar'):
+            print("Operação cancelada.")
+            return
 
-    headers, body, raw_text = parse_template_file(ACTIVE_DRAFT_FILE)
-    title = headers.get('TITLE', '').strip()
+        if not os.path.exists(ACTIVE_DRAFT_FILE):
+            print("AVISO: Rascunho não encontrado.")
+            return
 
-    if not title:
-        print("\n[CANCELADO] O campo 'TITLE:' ficou vazio. Nenhuma alteração foi publicada.")
-        os.remove(ACTIVE_DRAFT_FILE)
-        return
+        headers, body, raw_text = parse_template_file(ACTIVE_DRAFT_FILE)
+        title = headers.get('TITLE', '').strip()
+
+        if title:
+            break
+        print("\n[AVISO] O campo 'TITLE:' ainda aparece vazio no ficheiro!")
+        print("Certifica-te de que preencheste 'TITLE: ...' no separador certo do Notepad e carregaste em Ctrl+S.")
 
     print("\n--------------------------------------------------")
     print(f"  TIPO:   {content_type.upper()}")

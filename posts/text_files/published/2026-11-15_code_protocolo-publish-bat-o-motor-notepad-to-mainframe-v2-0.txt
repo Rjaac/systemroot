@@ -1,0 +1,45 @@
+TITLE: Protocolo PUBLISH.bat :: O Motor "Notepad-to-Mainframe" v2.0
+DESCRIPTION: Como transformámos o bloco de notas do Windows num sistema de publicação contínua para todas as secções do GRID_ROOT (Posts, Fotos, Livros e Código) com um único comando global.
+---
+Escrever não deve exigir abrir um IDE pesado nem tocar em tags HTML. A filosofia do SYSTEM_ROOT sempre foi focar no sinal (o texto puro) e deixar a máquina tratar do protocolo. Com a atualização v2.0 do nosso gerador, unificámos todas as 4 secções do site num único fluxo de trabalho centrado no Notepad.
+
+Ao adicionar a diretoria do projeto à variável de ambiente $PATH do Windows, o comando PUBLISH passou a estar disponível a partir de qualquer ponto do sistema operativo:
+
+[CODE]
+# Comandos globais disponíveis em qualquer terminal ou Win+R:
+PUBLISH post   -> Abre o Notepad, gera página em /posts e atualiza o index.html
+PUBLISH photo  -> Abre o Notepad e injeta nova captura em photos.html
+PUBLISH book   -> Abre o Notepad e publica nova obra em books.html
+PUBLISH code   -> Abre o Notepad (com suporte a blocos [CODE]) e atualiza code.html
+PUBLISH log    -> Exibe o registo cronológico de todas as transmissões
+[/CODE]
+
+A magia acontece na sincronia entre o processo do Windows e o script Python (_generator/manage.py). Quando o comando é invocado, o sistema copia o modelo .txt correspondente, abre o notepad.exe e fica em escuta até a janela ser fechada:
+
+[CODE]
+# Fluxo de execução do Protocolo PUBLISH:
+[Terminal: PUBLISH code]
+       │
+       ▼
+[manage.py] ──► Copia _generator/txt_templates/code.txt
+       │
+       ▼
+[notepad.exe] ──► O Operador escreve em texto puro, faz Ctrl+S e fecha
+       │
+       ▼
+[Parser & Injector] ──► Extrai cabeçalhos, converte [CODE] em <pre> e injeta no HTML
+       │
+       ▼
+[Arquivo & Git Sync] ──► Guarda backup em /published, faz Git Commit & Push -> Netlify Live!
+[/CODE]
+
+Zero fricção, zero dependências externas e controlo total sobre o arquivo local e remoto. O bloco de notas passou a ser o nosso terminal de comando direto para a rede.TITLE: 
+DESCRIPTION: 
+---
+Escreve aqui a introdução ou contexto técnico...
+
+[CODE]
+# Cola aqui o teu código, script ou diagrama ASCII
+[/CODE]
+
+Notas finais ou tecnologias utilizadas...
