@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <rect width="600" height="380" fill="#070a09"/>
+  <!-- Ambient Glow -->
+  <circle cx="300" cy="170" r="160" fill="#00ff00" opacity="0.06"/>
+  <circle cx="300" cy="170" r="100" fill="#00ffff" opacity="0.08"/>
+
+  <!-- Left Monitor -->
+  <polygon points="50,80 190,65 190,195 50,210" fill="#0c1412" stroke="#00ffff" stroke-width="2"/>
+  <line x1="65" y1="95" x2="155" y2="85" stroke="#00ff00" stroke-width="3"/>
+  <line x1="65" y1="110" x2="175" y2="100" stroke="#00ff00" stroke-width="2" opacity="0.7"/>
+  <line x1="65" y1="125" x2="140" y2="117" stroke="#ff00ff" stroke-width="2"/>
+  <line x1="65" y1="140" x2="170" y2="130" stroke="#00ff00" stroke-width="2" opacity="0.7"/>
+  <line x1="65" y1="155" x2="130" y2="148" stroke="#00ffff" stroke-width="2"/>
+
+  <!-- Center Mainframe Monitor -->
+  <rect x="205" y="55" width="190" height="135" fill="#09120e" stroke="#00ff00" stroke-width="2"/>
+  <text x="220" y="82" fill="#ff00ff" font-family="monospace" font-size="13">&gt; ROOT_ACCESS: GRANTED</text>
+  <text x="220" y="102" fill="#00ff00" font-family="monospace" font-size="12">$ ssh -p 2222 grid@node09</text>
+  <text x="220" y="122" fill="#00ffff" font-family="monospace" font-size="12">[##########] 100% DECRYPT</text>
+  <text x="220" y="142" fill="#00ff00" font-family="monospace" font-size="12">BYPASSING ICE_WALL_04...</text>
+  <text x="220" y="165" fill="#00ff00" font-family="monospace" font-size="13">&gt; _</text>
+
+  <!-- Right Monitor -->
+  <polygon points="410,65 550,80 550,210 410,195" fill="#0c1412" stroke="#ff00ff" stroke-width="2"/>
+  <circle cx="480" cy="135" r="35" fill="none" stroke="#00ffff" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <circle cx="480" cy="135" r="20" fill="none" stroke="#ff00ff" stroke-width="1.5"/>
+  <line x1="440" y1="135" x2="520" y2="135" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
+  <line x1="480" y1="95" x2="480" y2="175" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
+
+  <!-- Operator Hoodie Silhouette -->
+  <path d="M210,380 C210,285 245,255 300,255 C355,255 390,285 390,380 Z" fill="#040404" stroke="#00ffff" stroke-width="1.5"/>
+  <path d="M255,260 C250,200 270,165 300,165 C330,165 350,200 345,260 Z" fill="#050505" stroke="#00ff00" stroke-width="1.5"/>
+
+  <!-- Console Desk Line -->
+  <line x1="0" y1="290" x2="600" y2="290" stroke="#333" stroke-width="2"/>
+  <text x="16" y="28" fill="#00ff00" font-family="monospace" font-size="14">// CAM_02 :: OPERATOR TERMINAL</text>
+  <text x="455" y="28" fill="#00ffff" font-family="monospace" font-size="14">[ ENCRYPTED ]</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050010"/>
+      <stop offset="65%" stop-color="#150028"/>
+      <stop offset="100%" stop-color="#2a003f"/>
+    </linearGradient>
+    <linearGradient id="gridGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff00ff" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="380" fill="url(#sky)"/>
+  <!-- Cyber Sun / Moon -->
+  <circle cx="300" cy="180" r="65" fill="#ff00aa" opacity="0.75"/>
+  <rect x="230" y="165" width="140" height="4" fill="#150028"/>
+  <rect x="230" y="177" width="140" height="5" fill="#150028"/>
+  <rect x="230" y="190" width="140" height="7" fill="#150028"/>
+  <rect x="230" y="205" width="140" height="9" fill="#150028"/>
+
+  <!-- Cityscape Silhouettes -->
+  <g fill="#08080e" stroke="#00ffff" stroke-width="1" stroke-opacity="0.5">
+    <rect x="20" y="110" width="55" height="160"/>
+    <rect x="65" y="75" width="65" height="195"/>
+    <rect x="120" y="130" width="45" height="140"/>
+    <rect x="160" y="60" width="75" height="210"/>
+    <rect x="255" y="135" width="40" height="135"/>
+    <rect x="315" y="115" width="55" height="155"/>
+    <rect x="360" y="55" width="80" height="215"/>
+    <rect x="430" y="105" width="60" height="165"/>
+    <rect x="480" y="80" width="70" height="190"/>
+    <rect x="540" y="125" width="45" height="145"/>
+  </g>
+
+  <!-- Neon Windows & Signs -->
+  <g fill="#00ff00" opacity="0.8">
+    <rect x="75" y="90" width="8" height="12"/><rect x="90" y="90" width="8" height="12"/>
+    <rect x="75" y="110" width="8" height="12"/><rect x="105" y="110" width="8" height="12"/>
+    <rect x="175" y="75" width="45" height="6" fill="#ff00ff"/>
+    <rect x="175" y="90" width="45" height="3" fill="#00ffff"/>
+    <rect x="180" y="110" width="6" height="80" fill="#00ffff"/>
+    <rect x="210" y="110" width="6" height="80" fill="#ff00ff"/>
+    <rect x="375" y="70" width="50" height="8" fill="#00ff00"/>
+    <rect x="380" y="95" width="10" height="10"/><rect x="400" y="95" width="10" height="10"/>
+    <rect x="380" y="115" width="10" height="10"/><rect x="415" y="115" width="10" height="10"/>
+    <rect x="495" y="95" width="4" height="120" fill="#ff00ff"/>
+    <rect x="515" y="95" width="4" height="120" fill="#00ffff"/>
+  </g>
+
+  <!-- Perspective Horizon Grid -->
+  <rect x="0" y="270" width="600" height="110" fill="#050508"/>
+  <g stroke="url(#gridGlow)" stroke-width="1">
+    <line x1="0" y1="270" x2="600" y2="270" stroke="#ff00ff" stroke-width="2"/>
+    <line x1="0" y1="285" x2="600" y2="285"/>
+    <line x1="0" y1="305" x2="600" y2="305"/>
+    <line x1="0" y1="330" x2="600" y2="330"/>
+    <line x1="0" y1="360" x2="600" y2="360"/>
+    <line x1="300" y1="270" x2="0" y2="380"/>
+    <line x1="300" y1="270" x2="120" y2="380"/>
+    <line x1="300" y1="270" x2="240" y2="380"/>
+    <line x1="300" y1="270" x2="360" y2="380"/>
+    <line x1="300" y1="270" x2="480" y2="380"/>
+    <line x1="300" y1="270" x2="600" y2="380"/>
+  </g>
+
+  <!-- HUD Overlay -->
+  <text x="16" y="28" fill="#00ff00" font-family="monospace" font-size="14">// CAM_01 :: NEO-KYOTO SECTOR 2087</text>
+  <text x="480" y="28" fill="#ff00ff" font-family="monospace" font-size="14">[ REC ● ]</text>
+</svg>

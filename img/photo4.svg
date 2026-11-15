@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <rect width="600" height="380" fill="#08050d"/>
+
+  <!-- Floor Grid -->
+  <line x1="0" y1="300" x2="600" y2="300" stroke="#00ffff" stroke-width="1.5" opacity="0.7"/>
+  <g stroke="#ff00ff" stroke-width="1" opacity="0.35">
+    <line x1="0" y1="325" x2="600" y2="325"/>
+    <line x1="0" y1="355" x2="600" y2="355"/>
+    <line x1="150" y1="300" x2="50" y2="380"/>
+    <line x1="300" y1="300" x2="300" y2="380"/>
+    <line x1="450" y1="300" x2="550" y2="380"/>
+  </g>
+
+  <!-- Left Arcade Cabinet (Offline) -->
+  <g opacity="0.55">
+    <polygon points="80,95 175,95 185,300 70,300" fill="#0d0d14" stroke="#00ffff" stroke-width="1.5"/>
+    <rect x="85" y="105" width="85" height="22" fill="#181824" stroke="#00ffff" stroke-width="1"/>
+    <rect x="92" y="140" width="70" height="55" fill="#050508" stroke="#444" stroke-width="1.5"/>
+    <text x="103" y="172" fill="#555" font-family="monospace" font-size="11">NO SIGNAL</text>
+  </g>
+
+  <!-- Center Hero Arcade Cabinet (Active) -->
+  <polygon points="235,65 365,65 380,300 220,300" fill="#11091c" stroke="#ff00ff" stroke-width="2.5"/>
+  <!-- Marquee -->
+  <rect x="242" y="75" width="116" height="28" fill="#240038" stroke="#00ffff" stroke-width="1.5"/>
+  <text x="255" y="94" fill="#00ff00" font-family="monospace" font-size="15" font-weight="bold">POLYBIUS_84</text>
+  <!-- CRT Screen -->
+  <rect x="250" y="118" width="100" height="75" rx="6" fill="#04140a" stroke="#00ff00" stroke-width="2"/>
+  <text x="262" y="150" fill="#00ff00" font-family="monospace" font-size="13">INSERT COIN</text>
+  <text x="267" y="172" fill="#ff00ff" font-family="monospace" font-size="12">CREDITS: 00</text>
+  <!-- Joystick & Buttons -->
+  <polygon points="235,205 365,205 378,225 222,225" fill="#1a0e2e" stroke="#00ffff" stroke-width="1.5"/>
+  <line x1="265" y1="215" x2="265" y2="198" stroke="#00ffff" stroke-width="3"/>
+  <circle cx="265" cy="196" r="5" fill="#ff00ff"/>
+  <circle cx="320" cy="214" r="4" fill="#00ff00"/>
+  <circle cx="335" cy="212" r="4" fill="#ff00ff"/>
+
+  <!-- Right Arcade Cabinet (Offline) -->
+  <g opacity="0.55">
+    <polygon points="425,95 520,95 530,300 415,300" fill="#0d0d14" stroke="#00ffff" stroke-width="1.5"/>
+    <rect x="430" y="105" width="85" height="22" fill="#181824" stroke="#ff00ff" stroke-width="1"/>
+    <rect x="437" y="140" width="70" height="55" fill="#050508" stroke="#444" stroke-width="1.5"/>
+    <text x="448" y="172" fill="#555" font-family="monospace" font-size="11">ERR_0x88</text>
+  </g>
+
+  <text x="16" y="28" fill="#00ff00" font-family="monospace" font-size="14">// CAM_04 :: RELIC_SECTOR_1988</text>
+  <text x="465" y="28" fill="#ff00ff" font-family="monospace" font-size="14">[ STANDBY ]</text>
+</svg>

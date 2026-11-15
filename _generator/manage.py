@@ -2,6 +2,8 @@ import os
 import datetime
 import subprocess
 import sys
+import unicodedata
+import re
 
 # --- CONFIGURAÇÕES ---
 # Onde estão os ficheiros do blog
@@ -9,6 +11,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTS_DIR = os.path.join(BASE_DIR, 'posts')
 TEMPLATES_DIR = os.path.join(BASE_DIR, '_generator', 'templates')
 INDEX_FILE = os.path.join(BASE_DIR, 'index.html')
+
+def slugify(text):
+    """
+    Converte um título num nome de ficheiro limpo (ASCII, minúsculas, apenas letras, números e hífens).
+    """
+    normalized = unicodedata.normalize('NFKD', text)
+    ascii_text = normalized.encode('ascii', 'ignore').decode('ascii')
+    slug = re.sub(r'[^a-z0-9]+', '-', ascii_text.lower()).strip('-')
+    return slug or 'transmission'
 
 def git_sync(title):
     """
@@ -63,7 +74,7 @@ def create_post(title, summary, content_file):
     Função principal para criar o post.
     """
     date_str = datetime.datetime.now().strftime("%Y.%m.%d")
-    filename = title.lower().replace(" ", "-").replace(":", "").replace("_", "-").replace("'", "").replace(",", "")
+    filename = slugify(title)
     
     if os.path.exists(content_file):
         txt_path = content_file
@@ -76,7 +87,11 @@ def create_post(title, summary, content_file):
 
     with open(txt_path, 'r', encoding='utf-8') as f:
         raw_content = f.read()
-        formatted_content = "".join([f"<p>{line}</p>" for line in raw_content.split('\n') if line.strip()])
+        lines = [
+            line.strip() for line in raw_content.split('\n')
+            if line.strip() and line.strip() != '// TRANSMISSION_COMPLETE //'
+        ]
+        formatted_content = "\n                ".join([f"<p>{line}</p>" for line in lines])
 
     with open(os.path.join(TEMPLATES_DIR, 'post_template.html'), 'r', encoding='utf-8') as f:
         post_html = f.read()

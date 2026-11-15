@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <rect width="600" height="380" fill="#060c09"/>
+  <!-- PCB Grid -->
+  <g stroke="#0e2218" stroke-width="1">
+    <line x1="0" y1="60" x2="600" y2="60"/><line x1="0" y1="120" x2="600" y2="120"/>
+    <line x1="0" y1="180" x2="600" y2="180"/><line x1="0" y1="240" x2="600" y2="240"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="100" y1="0" x2="100" y2="380"/><line x1="200" y1="0" x2="200" y2="380"/>
+    <line x1="300" y1="0" x2="300" y2="380"/><line x1="400" y1="0" x2="400" y2="380"/>
+    <line x1="500" y1="0" x2="500" y2="380"/>
+  </g>
+
+  <!-- Circuit Traces -->
+  <g fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="40,70 150,70 190,110 240,110" stroke="#00ff00"/>
+    <polyline points="40,110 120,110 160,150 240,150" stroke="#00ffff"/>
+    <polyline points="60,290 150,290 190,230 240,230" stroke="#ff00ff"/>
+    <polyline points="560,85 450,85 410,125 360,125" stroke="#00ffff"/>
+    <polyline points="560,190 430,190 390,190 360,190" stroke="#00ff00"/>
+    <polyline points="540,310 440,310 400,250 360,250" stroke="#ff00ff"/>
+    <polyline points="270,40 270,95 270,130" stroke="#00ff00"/>
+    <polyline points="330,40 330,95 330,130" stroke="#00ffff"/>
+    <polyline points="270,340 270,285 270,250" stroke="#ff00ff"/>
+    <polyline points="330,340 330,285 330,250" stroke="#00ff00"/>
+  </g>
+
+  <!-- Solder Pads -->
+  <g fill="#060c09" stroke-width="2">
+    <circle cx="40" cy="70" r="5" stroke="#00ff00"/>
+    <circle cx="40" cy="110" r="5" stroke="#00ffff"/>
+    <circle cx="60" cy="290" r="5" stroke="#ff00ff"/>
+    <circle cx="560" cy="85" r="5" stroke="#00ffff"/>
+    <circle cx="560" cy="190" r="5" stroke="#00ff00"/>
+    <circle cx="540" cy="310" r="5" stroke="#ff00ff"/>
+  </g>
+
+  <!-- Central CPU Die -->
+  <rect x="235" y="125" width="130" height="130" fill="#0a0a0f" stroke="#00ffff" stroke-width="3"/>
+  <rect x="252" y="142" width="96" height="96" fill="#12081c" stroke="#ff00ff" stroke-width="1.5"/>
+  <text x="264" y="185" fill="#00ff00" font-family="monospace" font-size="16" font-weight="bold">GRID_CPU</text>
+  <text x="268" y="205" fill="#00ffff" font-family="monospace" font-size="12">Q-CORE 78</text>
+
+  <text x="16" y="28" fill="#00ff00" font-family="monospace" font-size="14">// CAM_03 :: MACRO_BUS_ARCHITECTURE</text>
+  <text x="475" y="28" fill="#00ff00" font-family="monospace" font-size="14">[ 50.00 Hz ]</text>
+</svg>
