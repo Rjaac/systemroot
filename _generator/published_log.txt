@@ -1,0 +1,7 @@
+[2025-04-11 00:00:00] TYPE=POST | TITLE="First Transmission: Booting Up_" | ARCHIVE=posts/first-transmission.html
+[2025-04-11 00:00:00] TYPE=POST | TITLE="Hacker Culture Menu – A Curated Feast_" | ARCHIVE=posts/second-transmission.html
+[2025-04-18 00:00:00] TYPE=POST | TITLE="Neuromancer Wasn’t Wrong – The Polished Dystopia Protocol" | ARCHIVE=posts/third-transmission.html
+[2025-04-19 00:00:00] TYPE=POST | TITLE="Fourth Transmission: Plugging In – A Personal Ethnography" | ARCHIVE=posts/fourth-transmission.html
+[2025-05-10 00:00:00] TYPE=POST | TITLE="Fifth Transmission: Blackout, Hertz e o Fantasma de Tesla" | ARCHIVE=posts/fifth-transmission.html
+[2026-03-31 00:00:00] TYPE=POST | TITLE="Sixth Transmission: Quantum Computing, IA e o Fantasma na Máquina" | ARCHIVE=posts/sixth-transmission-quantum-computing-ia-e-o-fantasma-na-maquina.html
+[2026-04-12 00:00:00] TYPE=POST | TITLE="OS NOVOS ESCRITORES ADÓNIS SÃO UMA TANGA, PAH!" | ARCHIVE=posts/os-novos-escritores-adonis-sao-uma-tanga-pah.html

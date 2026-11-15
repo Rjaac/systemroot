@@ -1,0 +1,5 @@
+TITLE: 
+IMAGE: img/nome-do-ficheiro.jpg
+---
+Escreve aqui a descrição da fotografia / captura visual.
+(Nota: coloca o ficheiro de imagem dentro da pasta img/ do projeto)

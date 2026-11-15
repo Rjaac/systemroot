@@ -1,0 +1,7 @@
+TITLE: 
+STATUS: Disponível
+LINK: https://
+IMAGE: 
+---
+Escreve aqui a sinopse, referências ou descrição do livro.
+(Nota: LINK e IMAGE são opcionais. Se colocares uma capa em img/, escreve ex: img/capa.jpg)

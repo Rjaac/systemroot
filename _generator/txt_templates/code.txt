@@ -1,0 +1,10 @@
+TITLE: 
+DESCRIPTION: 
+---
+Escreve aqui a introdução ou contexto técnico...
+
+[CODE]
+# Cola aqui o teu código, script ou diagrama ASCII
+[/CODE]
+
+Notas finais ou tecnologias utilizadas...

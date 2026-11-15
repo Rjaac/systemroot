@@ -5,3 +5,6 @@ __pycache__/
 
 # Netlify CLI state
 .netlify/
+
+# Temporary Notepad draft
+_generator/active_draft.txt
