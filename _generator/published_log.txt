@@ -5,4 +5,4 @@
 [2025-05-10 00:00:00] TYPE=POST | TITLE="Fifth Transmission: Blackout, Hertz e o Fantasma de Tesla" | ARCHIVE=posts/fifth-transmission.html
 [2026-03-31 00:00:00] TYPE=POST | TITLE="Sixth Transmission: Quantum Computing, IA e o Fantasma na Máquina" | ARCHIVE=posts/sixth-transmission-quantum-computing-ia-e-o-fantasma-na-maquina.html
 [2026-04-12 00:00:00] TYPE=POST | TITLE="OS NOVOS ESCRITORES ADÓNIS SÃO UMA TANGA, PAH!" | ARCHIVE=posts/os-novos-escritores-adonis-sao-uma-tanga-pah.html
-[2026-11-15 21:14:12] TYPE=CODE | TITLE="Protocolo PUBLISH.bat :: O Motor "Notepad-to-Mainframe" v2.0" | ARCHIVE=posts/text_files/published/2026-11-15_code_protocolo-publish-bat-o-motor-notepad-to-mainframe-v2-0.txt
+[2026-11-15 21:22:06] TYPE=CODE | TITLE="Protocolo PUBLISH.bat :: Arquitetura "Notepad-to-Mainframe" v2.0" | ARCHIVE=posts/text_files/published/2026-11-15_code_protocolo-publish-bat-arquitetura-notepad-to-mainframe-v2-0.txt

@@ -32,46 +32,51 @@
         <!-- LATEST_CODE_MARKER -->
 
         <section class="code-post">
-            <h3>Protocolo PUBLISH.bat :: O Motor "Notepad-to-Mainframe" v2.0</h3>
+            <h3>Protocolo PUBLISH.bat :: Arquitetura "Notepad-to-Mainframe" v2.0</h3>
             <p class="code-meta">DATE: 2026.11.15 // Operator: Rjaac78 // LOCATION: Setúbal Terminal //</p>
             <p class="code-description">
-                Como transformámos o bloco de notas do Windows num sistema de publicação contínua para todas as secções do GRID_ROOT (Posts, Fotos, Livros e Código) com um único comando global.
+                Engenharia de um sistema CLI global em Python e Batch que transforma o Bloco de Notas do Windows num motor de publicação e deploy contínuo (GitHub + Netlify) para todas as secções do GRID_ROOT.
             </p>
-            <p>Escrever não deve exigir abrir um IDE pesado nem tocar em tags HTML. A filosofia do SYSTEM_ROOT sempre foi focar no sinal (o texto puro) e deixar a máquina tratar do protocolo. Com a atualização v2.0 do nosso gerador, unificámos todas as 4 secções do site num único fluxo de trabalho centrado no Notepad.</p>
-            <p>Ao adicionar a diretoria do projeto à variável de ambiente $PATH do Windows, o comando PUBLISH passou a estar disponível a partir de qualquer ponto do sistema operativo:</p>
+            <p>A premissa técnica do SYSTEM_ROOT é simples: eliminar toda a fricção entre o pensamento do Operador e a publicação na rede. Abrir um IDE pesado, editar tags HTML manualmente ou decorar comandos extensos de terminal quebra o fluxo de escrita. Para resolver isto, desenhámos a versão 2.0 do nosso motor estático — o protocolo PUBLISH.bat.</p>
+            <p>1. INTEGRAÇÃO GLOBAL NO SISTEMA OPERATIVO ($PATH & BATCH DISPATCHER)</p>
+            <p>Ao adicionarmos a raiz do repositório (C:\Users\ricar\Projects\systemroot) à variável de ambiente User PATH do Windows, o lançador PUBLISH.bat passa a ser reconhecido como um comando nativo em qualquer consola (PowerShell, CMD ou janela Executar Win+R), independentemente da diretoria atual.</p>
             <pre class="code-snippet">
-# Comandos globais disponíveis em qualquer terminal ou Win+R:
-PUBLISH post   -&gt; Abre o Notepad, gera página em /posts e atualiza o index.html
-PUBLISH photo  -&gt; Abre o Notepad e injeta nova captura em photos.html
-PUBLISH book   -&gt; Abre o Notepad e publica nova obra em books.html
-PUBLISH code   -&gt; Abre o Notepad (com suporte a blocos [CODE]) e atualiza code.html
-PUBLISH log    -&gt; Exibe o registo cronológico de todas as transmissões
+@echo off
+chcp 65001 &gt;nul
+python &quot;%~dp0_generator\manage.py&quot; %*
+# Uso global a partir de qualquer pasta no Windows:
+PUBLISH post   -&gt; Nova transmissão em /posts + card em index.html
+PUBLISH photo  -&gt; Nova captura visual em photos.html
+PUBLISH book   -&gt; Nova publicação literária em books.html
+PUBLISH code   -&gt; Novo artigo técnico em code.html
+PUBLISH log    -&gt; Auditoria cronológica de todas as publicações
             </pre>
-            <p>A magia acontece na sincronia entre o processo do Windows e o script Python (_generator/manage.py). Quando o comando é invocado, o sistema copia o modelo .txt correspondente, abre o notepad.exe e fica em escuta até a janela ser fechada:</p>
+            <p>O uso da variável de expansão "%~dp0" garante que o script resolve sempre o caminho absoluto para o motor Python e para os templates do projeto, mesmo quando invocado fora da pasta do repositório, enquanto o "chcp 65001" força a codificação UTF-8 para preservar todos os caracteres da língua portuguesa.</p>
+            <p>2. PARSER DE METADADOS, SANITIZAÇÃO ASCII E COMPILAÇÃO DE BLOCOS</p>
+            <p>Quando o comando é executado, o motor copia o modelo correspondente de _generator/txt_templates/ para um buffer ativo (active_draft.txt) e lança o notepad.exe. Assim que o ficheiro é guardado (Ctrl+S), o parser entra em ação: divide o cabeçalho (Key-Value) do corpo através do delimitador "---", normaliza o título em Unicode (NFKD) para gerar slugs ASCII limpos e compila os blocos</p>
             <pre class="code-snippet">
-# Fluxo de execução do Protocolo PUBLISH:
-[Terminal: PUBLISH code]
-       │
-       ▼
-[manage.py] ──► Copia _generator/txt_templates/code.txt
-       │
-       ▼
-[notepad.exe] ──► O Operador escreve em texto puro, faz Ctrl+S e fecha
-       │
-       ▼
-[Parser &amp; Injector] ──► Extrai cabeçalhos, converte [CODE] em &lt;pre&gt; e injeta no HTML
-       │
-       ▼
-[Arquivo &amp; Git Sync] ──► Guarda backup em /published, faz Git Commit &amp; Push -&gt; Netlify Live!
+ com escape automático de entidades HTML.
+[CODE]
+def slugify(text):
+    normalized = unicodedata.normalize(&#x27;NFKD&#x27;, text)
+    ascii_text = normalized.encode(&#x27;ascii&#x27;, &#x27;ignore&#x27;).decode(&#x27;ascii&#x27;)
+    return re.sub(r&#x27;[^a-z0-9]+&#x27;, &#x27;-&#x27;, ascii_text.lower()).strip(&#x27;-&#x27;)
+def inject_into_page(page_path, marker, item_html):
+    with open(page_path, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+        content = f.read()
+    parts = content.split(marker, 1)
+    new_content = parts[0] + marker + &quot;\n\n&quot; + item_html + parts[1]
+    with open(page_path, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+        f.write(new_content)
             </pre>
-            <p>Zero fricção, zero dependências externas e controlo total sobre o arquivo local e remoto. O bloco de notas passou a ser o nosso terminal de comando direto para a rede.TITLE:</p>
-            <p>DESCRIPTION:</p>
-            <p>---</p>
-            <p>Escreve aqui a introdução ou contexto técnico...</p>
+            <p>3. INJEÇÃO CIRÚRGICA DOM, ARQUIVO IMUTÁVEL E DEPLOY CONTÍNUO</p>
+            <p>Em vez de reconstruir todo o site a cada alteração (como fazem os geradores pesados), o manage.py utiliza marcadores HTML estratégicos (como <!-- LATEST_CODE_MARKER -->) para injetar o novo componente exatamente no topo da secção correspondente em milissegundos.</p>
             <pre class="code-snippet">
-# Cola aqui o teu código, script ou diagrama ASCII
+[Notepad: Ctrl+S] ──► [manage.py Parser] ──► [Injeção HTML (index/photos/books/code)]
+                                                       │
+[Netlify CDN (4s)] ◄── [Git Add/Commit/Push] ◄── [Arquivo em /published + published_log.txt]
             </pre>
-            <p>Notas finais ou tecnologias utilizadas...</p>
+            <p>Por fim, o sistema guarda uma cópia datada do texto original em posts/text_files/published/, regista a operação com timestamp em _generator/published_log.txt e dispara o pipeline Git (add, commit e push para origin/main). Em cerca de 4 segundos, o webhook do Netlify deteta o commit e publica a nova transmissão em produção.</p>
         </section>
 
 

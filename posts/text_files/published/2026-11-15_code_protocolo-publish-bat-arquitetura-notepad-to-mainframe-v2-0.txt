@@ -1,0 +1,41 @@
+TITLE: Protocolo PUBLISH.bat :: Arquitetura "Notepad-to-Mainframe" v2.0
+DESCRIPTION: Engenharia de um sistema CLI global em Python e Batch que transforma o Bloco de Notas do Windows num motor de publicação e deploy contínuo (GitHub + Netlify) para todas as secções do GRID_ROOT.
+---
+A premissa técnica do SYSTEM_ROOT é simples: eliminar toda a fricção entre o pensamento do Operador e a publicação na rede. Abrir um IDE pesado, editar tags HTML manualmente ou decorar comandos extensos de terminal quebra o fluxo de escrita. Para resolver isto, desenhámos a versão 2.0 do nosso motor estático — o protocolo PUBLISH.bat.
+1. INTEGRAÇÃO GLOBAL NO SISTEMA OPERATIVO ($PATH & BATCH DISPATCHER)
+Ao adicionarmos a raiz do repositório (C:\Users\ricar\Projects\systemroot) à variável de ambiente User PATH do Windows, o lançador PUBLISH.bat passa a ser reconhecido como um comando nativo em qualquer consola (PowerShell, CMD ou janela Executar Win+R), independentemente da diretoria atual.
+[CODE]
+@echo off
+chcp 65001 >nul
+python "%~dp0_generator\manage.py" %*
+# Uso global a partir de qualquer pasta no Windows:
+PUBLISH post   -> Nova transmissão em /posts + card em index.html
+PUBLISH photo  -> Nova captura visual em photos.html
+PUBLISH book   -> Nova publicação literária em books.html
+PUBLISH code   -> Novo artigo técnico em code.html
+PUBLISH log    -> Auditoria cronológica de todas as publicações
+[/CODE]
+O uso da variável de expansão "%~dp0" garante que o script resolve sempre o caminho absoluto para o motor Python e para os templates do projeto, mesmo quando invocado fora da pasta do repositório, enquanto o "chcp 65001" força a codificação UTF-8 para preservar todos os caracteres da língua portuguesa.
+2. PARSER DE METADADOS, SANITIZAÇÃO ASCII E COMPILAÇÃO DE BLOCOS
+Quando o comando é executado, o motor copia o modelo correspondente de _generator/txt_templates/ para um buffer ativo (active_draft.txt) e lança o notepad.exe. Assim que o ficheiro é guardado (Ctrl+S), o parser entra em ação: divide o cabeçalho (Key-Value) do corpo através do delimitador "---", normaliza o título em Unicode (NFKD) para gerar slugs ASCII limpos e compila os blocos [CODE] com escape automático de entidades HTML.
+[CODE]
+def slugify(text):
+    normalized = unicodedata.normalize('NFKD', text)
+    ascii_text = normalized.encode('ascii', 'ignore').decode('ascii')
+    return re.sub(r'[^a-z0-9]+', '-', ascii_text.lower()).strip('-')
+def inject_into_page(page_path, marker, item_html):
+    with open(page_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    parts = content.split(marker, 1)
+    new_content = parts[0] + marker + "\n\n" + item_html + parts[1]
+    with open(page_path, 'w', encoding='utf-8') as f:
+        f.write(new_content)
+[/CODE]
+3. INJEÇÃO CIRÚRGICA DOM, ARQUIVO IMUTÁVEL E DEPLOY CONTÍNUO
+Em vez de reconstruir todo o site a cada alteração (como fazem os geradores pesados), o manage.py utiliza marcadores HTML estratégicos (como <!-- LATEST_CODE_MARKER -->) para injetar o novo componente exatamente no topo da secção correspondente em milissegundos.
+[CODE]
+[Notepad: Ctrl+S] ──► [manage.py Parser] ──► [Injeção HTML (index/photos/books/code)]
+                                                       │
+[Netlify CDN (4s)] ◄── [Git Add/Commit/Push] ◄── [Arquivo em /published + published_log.txt]
+[/CODE]
+Por fim, o sistema guarda uma cópia datada do texto original em posts/text_files/published/, regista a operação com timestamp em _generator/published_log.txt e dispara o pipeline Git (add, commit e push para origin/main). Em cerca de 4 segundos, o webhook do Netlify deteta o commit e publica a nova transmissão em produção.
